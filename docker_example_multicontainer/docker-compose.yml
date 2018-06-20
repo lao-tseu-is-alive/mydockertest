@@ -1,0 +1,16 @@
+version: '2'
+services:
+  pyapp:
+    build: python
+    image: pyapp
+    ports:
+      - '8080:80'
+  website:
+    build: website
+    image: website
+    ports:
+      - '8081:80'
+    links:
+      - pyapp
+    depends_on:
+      - pyapp
